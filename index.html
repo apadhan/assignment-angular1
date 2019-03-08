@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+    <link data-require="bootstrap-css@3.0.2" data-semver="3.0.3" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
+    <script data-require="angular.js@*" data-semver="1.2.5" src="http://code.angularjs.org/1.2.5/angular.js"></script>
+    <script data-require="jquery@*" data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script data-require="bootstrap@*" data-semver="3.0.2" src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+    </head>
+    <body ng-app="app" ng-controller="table_controller">
+            <h1>Dynamic table</h1>
+            
+            <div class="form-group">
+              <div>
+                <h2>Columns</h2>
+                <div ng-repeat="c in all_columns">
+                  <label>
+                    <input type="checkbox" ng-model="c.checked"> {{ c.title }}
+                  </label>
+                </div>
+              </div>
+            
+         
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th ng-repeat="c in ordered_columns">{{ c.title }}
+                  </th>
+                </tr>
+                <tbody>
+                  <tr ng-repeat="d in data">
+                    <td ng-repeat="c in ordered_columns">{{ d[c.title] }}</td>
+                  </tr>
+                </tbody>
+            </table>
+        </div><br>
+            <button ng-click="shuffleColumnOrder()">Shuffle column order </button><br><br>
+    <form class="form-horizontal" role="form" ng-submit="addRow()">
+            <div class="form-group">
+                <label class="col-md-2 control-label">Name</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" name="name"
+                        ng-model="name" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Age</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" name="age"
+                        ng-model="employees" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">City</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" name="city"
+                        ng-model="city" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">State</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" name="state"
+                        ng-model="state" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Job</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" name="job"
+                        ng-model="job" />
+                </div>
+            </div>
+            <div class="form-group">								
+                <div style="padding-left:110px">
+                    <input type="submit" value="Submit" class="btn btn-primary"/>
+                </div>
+            </div>
+        </form>  
+
+    </body>
+</html>    
